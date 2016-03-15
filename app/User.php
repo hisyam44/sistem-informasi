@@ -23,4 +23,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function transfers(){
+        return $this->hasMany('App\Transfer','user_id');
+    }
 }

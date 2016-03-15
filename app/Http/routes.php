@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -28,4 +24,11 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+	Route::get('income','TransferController@income');
+	Route::get('outcome','TransferController@outcome');
+	Route::resource('/','TransferController');
+  	Route::auth();
 });
